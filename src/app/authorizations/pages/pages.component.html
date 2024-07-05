@@ -1,0 +1,52 @@
+<div class="container-fluid p-1 p-sm-2 p-md-3">
+    <div class="row justify-content-center align-items-center p-lg-1 p-xl-2">
+        <div class="col-12 mt-2 text-center">
+            <h2 style="font-weight: bold;">PAGES AUTHORIZATIONS</h2>
+        </div>
+        <div class="col-12 mt-2">
+            <form [formGroup]="pagesForm" (ngSubmit)="onSubmit()">
+                <table mat-table [dataSource]="pagesArray.controls" class="mat-elevation-z8">
+
+                    <!-- Position Column -->
+                    <ng-container matColumnDef="component">
+                        <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Component </th>
+                        <td mat-cell *matCellDef="let page"> {{page.get('component_name')?.value}} </td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="page">
+                        <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Page </th>
+                        <td mat-cell *matCellDef="let page"> {{page.get('page_name')?.value}} </td>
+                    </ng-container>
+
+                    <!-- Weight Column -->
+                    <ng-container matColumnDef="authorization">
+                        <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Authorization </th>
+                        <td mat-cell *matCellDef="let page; let i = index" [formGroup]="page" style="text-align: center;">
+                            <input class="form-check-input" type="checkbox" role="switch" formControlName="authorization"
+                            [checked]="page.get('authorization')?.value === 1" (change)="onCheckboxChange($event, 'authorization', i)">
+                        </td>
+                    </ng-container>
+
+                    <!-- Symbol Column -->
+                    <ng-container matColumnDef="readonly">
+                        <th mat-header-cell *matHeaderCellDef style="text-align: center;"> Readonly </th>
+                        <td mat-cell *matCellDef="let page; let i = index" [formGroup]="page" style="text-align: center;">
+                            <input class="form-check-input" type="checkbox" role="switch" formControlName="readonly"
+                            [checked]="page.get('readonly')?.value === 1" (change)="onCheckboxChange($event, 'readonly', i)">
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </form>
+        </div>
+
+        <div class="col-12 mt-4 text-center">
+          <button type="button" class="btn btn-outline-dark" (click)="onSubmit()">
+            Submit
+          </button>          
+        </div>
+    </div>
+</div>

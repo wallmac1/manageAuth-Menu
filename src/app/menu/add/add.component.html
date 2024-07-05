@@ -1,0 +1,63 @@
+<div class="container-fluid p-1 p-sm-2 p-md-3">
+    <div class="row justify-content-center align-items-center p-lg-1 p-xl-2">
+        <div class="col-12 mt-2 text-center">
+            <h2 style="font-weight: bold;">ADD MENU</h2>
+        </div>
+    </div>
+
+    <form [formGroup]="addMenuForm" (ngSubmit)="onSubmit()">
+        <div class="row justify-content-center align-items-center mt-4">
+
+            <div class="col-12 col-md-8 mt-4">
+                <label for="menu_voice" style="font-weight: bold;">Voice Name</label>
+                <input type="text" class="form-control" formControlName="menu_voice">
+            </div>
+
+            <div class="col-12 col-md-8 mt-4">
+                <label for="pageid" style="font-weight: bold;">Page to add</label>
+                <select class="form-select" formControlName="pageid">
+                    <option disabled selected [ngValue]="null">Select a page</option>
+                    <option *ngFor="let page of pages" [ngValue]="page.id">{{page.name}}</option>
+                </select>
+            </div>
+
+            <div class="col-12 col-md-8 mt-4">
+                <label for="level" style="font-weight: bold;">Level</label>
+                <select class="form-select" aria-label="select example" formControlName="level">
+                    <option [ngValue]="null" disabled selected>Select a level</option>
+                    <option *ngFor="let level of levels" [ngValue]="level">
+                        {{level}}
+                    </option>
+                </select>
+            </div>
+
+            <div *ngIf="addMenuForm.get('level')?.value !== 0 && addMenuForm.get('level')?.value !== null" class="col-12 col-md-8 mt-4">
+                <label for="levelzero_id" style="font-weight: bold;">Level Zero</label>
+                <select class="form-select" aria-label="select example" formControlName="levelzero_id">
+                    <option [ngValue]="null" disabled selected>Select the level zero</option>
+                    <option *ngFor="let level of levelsZero" [ngValue]="level.id">
+                        {{level.name}}
+                    </option>
+                </select>
+            </div>
+
+            <div *ngIf="addMenuForm.get('level')?.value === 2 && addMenuForm.get('levelzero_id')?.value !== null" class="col-12 col-md-8 mt-4">
+                <label for="levelone_id" style="font-weight: bold;">LEVEL ONE</label>
+                <select class="form-select" aria-label="select example" formControlName="levelone_id">
+                    <option [ngValue]="null" disabled selected>Select the level one</option>
+                    <option *ngFor="let level of levelsOne" [ngValue]="level.id">
+                        {{level.name}}
+                    </option>
+                </select>
+            </div>
+
+        </div>
+    </form>
+
+
+    <div class="col-12 mt-4 text-center">
+        <button type="button" class="btn btn-outline-dark" (click)="onSubmit()">
+            Submit
+        </button>
+    </div>
+</div>
