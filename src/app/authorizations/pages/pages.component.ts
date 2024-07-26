@@ -22,7 +22,7 @@ export class PagesComponent {
   pagesForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder) {
-    // Create a form array for pages
+    
     this.pagesForm = this.formBuilder.group({
       pages: this.formBuilder.array(this.pages.map(page => this.createPageGroup(page)))
     });
