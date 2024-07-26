@@ -4,6 +4,7 @@ import { FunctionalitiesComponent } from './authorizations/functionalities/funct
 import { HomeComponent } from './home/home.component';
 import { AddComponent } from './menu/add/add.component';
 import { ModifyComponent } from './menu/modify/modify.component';
+import { DeleteComponent } from './delete/delete.component';
 
 export const routes: Routes = [
     { path: "", redirectTo: "home", pathMatch: "full" },
@@ -11,5 +12,6 @@ export const routes: Routes = [
     { path: "authorizations/pages", component: PagesComponent },
     { path: "authorizations/functionalities", component: FunctionalitiesComponent },
     { path: "menu/add", component: AddComponent },
-    { path: "menu/modify", component: ModifyComponent }
+    { path: "menu/modify", component: ModifyComponent },
+    { path: "menu/delete", component: DeleteComponent }
 ];
