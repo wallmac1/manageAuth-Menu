@@ -1,5 +1,7 @@
 # UserPermissions
 
+Progetto di definizione del menù per la gestione dei permessi ai componenti e alle pagine.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.3.
 
 ## Development server
